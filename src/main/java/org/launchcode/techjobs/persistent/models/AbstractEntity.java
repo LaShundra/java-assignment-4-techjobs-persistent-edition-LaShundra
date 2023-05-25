@@ -3,8 +3,11 @@ package org.launchcode.techjobs.persistent.models;
 import java.util.Objects;
 
 
-public abstract class AbstractEntity {
+@MappedSuperclass
 
+public abstract class AbstractEntity {
+    @ID
+    @GenerateValue
     private int id;
 
     private String name;
