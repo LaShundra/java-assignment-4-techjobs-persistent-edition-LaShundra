@@ -16,7 +16,7 @@ import java.util.Optional;
 public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
-    private Model model;
+
 
     @GetMapping
     public String displayAllEmployers(Model model){
@@ -34,9 +34,9 @@ public class EmployerController {
     @PostMapping("add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                     Errors errors, Model model) {
-        this.model = model;
 
         if (errors.hasErrors()) {
+
             return "employers/add";
         }
         employerRepository.save(newEmployer);

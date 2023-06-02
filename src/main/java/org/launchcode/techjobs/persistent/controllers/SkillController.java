@@ -16,7 +16,8 @@ import java.util.Optional;
 public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
-    private Model model;
+
+
 
     @GetMapping
     private String displayAllSkills(Model model){
@@ -32,7 +33,8 @@ public class SkillController {
     @PostMapping("add")
     public String processAddSkillsForm(@ModelAttribute @Valid Skill newSkill,
                                        Errors errors, Model model){
-        this.model = model;
+
+
         if (errors.hasErrors()){
         return "skills/add";
         }
