@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.persistent.controllers;
 
+import org.hibernate.mapping.Index;
 import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
 
+    private Index index;
 
     @GetMapping
     public String displayAllEmployers(Model model){
@@ -30,6 +32,7 @@ public class EmployerController {
         model.addAttribute(new Employer());
         return "employers/add";
     }
+
 
     @PostMapping("add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
