@@ -19,29 +19,32 @@ public class SkillController {
     private SkillRepository skillRepository;
 
 
-  private Index index;
-
-
-    @GetMapping
-    private String displayAllSkills(Model model){
-      model.addAttribute("title", "List of Skills");
-      model.addAttribute("skills", skillRepository.findAll());
-      return "skills/index";
+    @RequestMapping("")
+    public String index(Model model) {
+        model.addAttribute("skills", skillRepository.findAll());
+        return "skills/index";
     }
+
+//        @GetMapping
+//    private String displayAllSkills(Model model){
+//      model.addAttribute("title", "List of Skills");
+//      model.addAttribute("skills", skillRepository.findAll());
+//      return "skills/index";
+//    }
     @GetMapping("add")
     public String displayAddSkillsForm(Model model){
         model.addAttribute(new Skill());
         return "skills/add";
     }
     @PostMapping("add")
-    public String processAddSkillsForm(@ModelAttribute @Valid Skill newSkill,
+    public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                        Errors errors, Model model){
 
 
         if (errors.hasErrors()){
         return "skills/add";
         }
-        skillRepository.save((newSkill));
+        skillRepository.save(newSkill);
         return "redirect";
     }
     @GetMapping("view/{skillId}")
