@@ -45,7 +45,7 @@ public class SkillController {
         return "skills/add";
         }
         skillRepository.save(newSkill);
-        return "redirect";
+        return "redirect:";
     }
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId){

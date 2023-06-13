@@ -36,7 +36,7 @@ public class HomeController {
 
         model.addAttribute("title", "My Jobs");
         List jobs = (List<Job>) jobRepository.findAll();
-        model.addAttribute("title", "Add Job");
+        model.addAttribute("jobs", jobs);
 
         return "index";
     }
